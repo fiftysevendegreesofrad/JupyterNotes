@@ -11779,12 +11779,7 @@ div#notebook {
 <h2 id="Introduction:-roughness-and-smoothness">Introduction: roughness and smoothness<a class="anchor-link" href="#Introduction:-roughness-and-smoothness">&#182;</a></h2><p>Once upon a time we were creatures in the wilderness and we evolved the ability to hear sounds. Now here's an interesting thing, if you hear a sound of frequency f and others of frequency 2f, 3f, etc then there's a good chance these sounds come from the same object, due to the physical principle of <a href="https://en.wikipedia.org/wiki/Resonance">resonance</a>. And so our perception of sound evolved to reflect this; we perceive any harmonic series of frequencies f, 2f, 3f etc as being <em>somehow related</em>. The effect is strongest for the 2f/f pair, but it's pretty strong for the 3f/2f pair as well. Talking of evolution, at some point we discovered that making decent music increases the odds of mating.  And so it came to pass that musical notation explicitly recognises the 2f/f relationship by giving all pairs of notes with frequencies in a 2/1 ratio - in music terminology, an octave apart - <em>the same name as one another</em>.</p>
 <p>Another implication of all this is that there is a function <code>roughness(sounds)</code> that approximates how much we perceive a set of sounds as belonging together (smooth, or consonant) versus sounding different (dissonant, or rough). A github user called endolith already <a href="https://gist.github.com/endolith/3066664">implemented this in Python</a> as a function taking two lists: <code>roughness(frequencies, amplutides)</code>. It's not quite as neat as my first paragraph implies, because, um, I'm not a biologist but I gather human brains are fat that somehow thinks?  Also our ears have limited precision and we exploit the phenomenon of <a href="https://en.wikipedia.org/wiki/Beat_%28acoustics%29">beats</a> to help us detect differences in frequency. But I'm taking this as the biological basis for the rest of our adventure, at the end of which we will have deduced what a piano keyboard looks like.</p>
 
-</div>
-</div>
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Ok, let's test <code>roughness</code> by computing how rough a 523Hz frequency sounds with every other frequency from 523-1046Hz:</p>
+<p>Right. Let's start by testing <code>roughness</code> by computing how rough a 523Hz frequency sounds with every other frequency from 523-1046Hz:</p>
 
 </div>
 </div>
