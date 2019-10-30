@@ -11782,44 +11782,6 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">asarray</span><span class="p">,</span> <span class="n">argsort</span><span class="p">,</span> <span class="n">sort</span><span class="p">,</span> <span class="nb">sum</span><span class="p">,</span> <span class="n">minimum</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="k">def</span> <span class="nf">roughness</span><span class="p">(</span><span class="n">fvec</span><span class="p">,</span> <span class="n">amp</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Given a list of partials in fvec, with amplitudes in amp, this routine</span>
-<span class="sd">    calculates the dissonance by summing the roughness of every sine pair</span>
-<span class="sd">    based on a model of Plomp-Levelt&#39;s roughness curve.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">fvec</span> <span class="o">=</span> <span class="n">asarray</span><span class="p">(</span><span class="n">fvec</span><span class="p">);</span><span class="n">amp</span> <span class="o">=</span> <span class="n">asarray</span><span class="p">(</span><span class="n">amp</span><span class="p">)</span>
-    <span class="n">Dstar</span> <span class="o">=</span> <span class="mf">0.24</span>
-    <span class="n">S1</span> <span class="o">=</span> <span class="mf">0.0207</span><span class="p">;</span><span class="n">S2</span> <span class="o">=</span> <span class="mf">18.96</span><span class="p">;</span><span class="n">C1</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span><span class="n">C2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
-    <span class="n">A1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.51</span><span class="p">;</span> <span class="n">A2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.75</span>
-    <span class="n">ams</span> <span class="o">=</span> <span class="n">amp</span><span class="p">[</span><span class="n">argsort</span><span class="p">(</span><span class="n">fvec</span><span class="p">)]</span>
-    <span class="n">fvec</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">fvec</span><span class="p">)</span>
-    <span class="n">D</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">fvec</span><span class="p">)):</span>
-        <span class="n">Fmin</span> <span class="o">=</span> <span class="n">fvec</span><span class="p">[:</span><span class="o">-</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">S</span> <span class="o">=</span> <span class="n">Dstar</span> <span class="o">/</span> <span class="p">(</span><span class="n">S1</span> <span class="o">*</span> <span class="n">Fmin</span> <span class="o">+</span> <span class="n">S2</span><span class="p">)</span>
-        <span class="n">Fdif</span> <span class="o">=</span> <span class="n">fvec</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span> <span class="o">-</span> <span class="n">fvec</span><span class="p">[:</span><span class="o">-</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">Dnew</span> <span class="o">=</span> <span class="n">minimum</span><span class="p">(</span><span class="n">ams</span><span class="p">[:</span><span class="o">-</span><span class="n">i</span><span class="p">],</span> <span class="n">ams</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span> <span class="o">*</span> <span class="p">(</span><span class="n">C1</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">A1</span> <span class="o">*</span> <span class="n">S</span> <span class="o">*</span> <span class="n">Fdif</span><span class="p">)</span> <span class="o">+</span> <span class="n">C2</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">A2</span> <span class="o">*</span> <span class="n">S</span> <span class="o">*</span> <span class="n">Fdif</span><span class="p">))</span>
-        <span class="n">D</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">Dnew</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">D</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Ok, let's test <code>roughness</code> by computing how rough a 523Hz frequency sounds with every other frequency from 523-1046Hz:</p>
